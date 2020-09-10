@@ -5,6 +5,7 @@ class Api::V1::MonasteriesController < ApplicationController
   end
 
   def show
-
+    monastery = Monastery.find_by(id: params[:id])
+    render json: monastery
   end
 end
