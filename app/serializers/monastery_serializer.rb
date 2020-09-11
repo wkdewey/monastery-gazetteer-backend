@@ -1,4 +1,4 @@
 class MonasterySerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :name, :location, :religious_tradition
 end
