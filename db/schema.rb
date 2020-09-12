@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 2020_09_11_234110) do
 
   create_table "monastery_figures", force: :cascade do |t|
     t.bigint "monastery_id", null: false
-    t.bigint "figures_id", null: false
+    t.bigint "figure_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["figures_id"], name: "index_monastery_figures_on_figures_id"
+    t.index ["figure_id"], name: "index_monastery_figures_on_figure_id"
     t.index ["monastery_id"], name: "index_monastery_figures_on_monastery_id"
   end
 
-  add_foreign_key "monastery_figures", "figures", column: "figures_id"
+  add_foreign_key "monastery_figures", "figures"
   add_foreign_key "monastery_figures", "monasteries"
 end

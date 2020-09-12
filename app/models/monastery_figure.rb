@@ -1,4 +1,4 @@
 class MonasteryFigure < ApplicationRecord
-  belongs_to :Monastery
-  belongs_to :Figures
+  belongs_to :monastery
+  belongs_to :figure
 end
