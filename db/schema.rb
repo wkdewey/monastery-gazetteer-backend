@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_181632) do
+ActiveRecord::Schema.define(version: 2020_09_11_234110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "figures", force: :cascade do |t|
+    t.string "name"
+    t.string "lifespan"
+    t.string "religious_tradition"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "monasteries", force: :cascade do |t|
     t.string "name"
@@ -23,4 +31,15 @@ ActiveRecord::Schema.define(version: 2020_09_10_181632) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "monastery_figures", force: :cascade do |t|
+    t.bigint "monastery_id", null: false
+    t.bigint "figure_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["figure_id"], name: "index_monastery_figures_on_figure_id"
+    t.index ["monastery_id"], name: "index_monastery_figures_on_monastery_id"
+  end
+
+  add_foreign_key "monastery_figures", "figures"
+  add_foreign_key "monastery_figures", "monasteries"
 end
