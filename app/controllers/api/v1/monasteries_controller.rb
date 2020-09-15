@@ -13,7 +13,7 @@ class Api::V1::MonasteriesController < ApplicationController
     byebug
     monastery = Monastery.new(monastery_params)
     if monastery.save
-      render json: monastery, status: :accepted
+      render json: MonasterySerializer.new(monastery), status: :accepted
     else
       render json: { errors: monastery.errors.full_messages }, status: :unprocessible_entity
     end

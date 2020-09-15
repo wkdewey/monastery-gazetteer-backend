@@ -13,7 +13,7 @@ class Api::V1::FiguresController < ApplicationController
     byebug
     figure = Figure.new(figure_params)
     if figure.save
-      render json: figure, status: :accepted
+      render json: FigureSerializer.new(figure), status: :accepted
     else
       render json: { errors: figure.errors.full_messages }, status: :unprocessible_entity
     end
