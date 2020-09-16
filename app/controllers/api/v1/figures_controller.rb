@@ -1,4 +1,6 @@
 class Api::V1::FiguresController < ApplicationController
+
+  wrap_parameters :figure, include: [:name, :lifespan, :religious_tradition, :monastery_ids]
   def index
     figures = Figure.all
     render json: FigureSerializer.new(figures)
@@ -10,7 +12,6 @@ class Api::V1::FiguresController < ApplicationController
   end
 
   def create
-    byebug
     figure = Figure.new(figure_params)
     if figure.save
       render json: FigureSerializer.new(figure), status: :accepted
@@ -22,6 +23,6 @@ class Api::V1::FiguresController < ApplicationController
   private
 
   def figure_params
-    params.permit(:name, :lifespan, :religious_tradition, monastery_ids: [])
+    params.require(:figure).permit(:name, :lifespan, :religious_tradition, monastery_ids: [])
   end
 end

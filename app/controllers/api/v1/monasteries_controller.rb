@@ -1,4 +1,6 @@
 class Api::V1::MonasteriesController < ApplicationController
+
+  wrap_parameters :monastery, include: [:name, :location, :religious_tradition, :figure_ids]
   def index
     monasteries = Monastery.all
     render json: MonasterySerializer.new(monasteries)
@@ -21,6 +23,6 @@ class Api::V1::MonasteriesController < ApplicationController
   private
 
   def monastery_params
-    params.permit(:name, :location, :religious_tradition, figure_ids: [])
+    params.require(:monastery).permit(:name, :location, :religious_tradition, :figure_ids => [])
   end
 end
