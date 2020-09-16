@@ -10,7 +10,6 @@ class Api::V1::MonasteriesController < ApplicationController
   end
 
   def create
-    byebug
     monastery = Monastery.new(monastery_params)
     if monastery.save
       render json: MonasterySerializer.new(monastery), status: :accepted
@@ -22,6 +21,6 @@ class Api::V1::MonasteriesController < ApplicationController
   private
 
   def monastery_params
-    params.permit(:name, :location, :religious_tradition, :figure_ids)
+    params.permit(:name, :location, :religious_tradition, figure_ids: [])
   end
 end
