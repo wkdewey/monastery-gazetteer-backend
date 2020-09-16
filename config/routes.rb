@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :monasteries, only: [:index, :show, :create]
-      resources :figures, only: [:index, :show]
+      resources :figures, only: [:index, :show, :create]
     end
   end
 end
