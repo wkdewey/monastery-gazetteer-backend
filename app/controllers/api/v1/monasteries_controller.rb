@@ -6,11 +6,6 @@ class Api::V1::MonasteriesController < ApplicationController
     render json: MonasterySerializer.new(monasteries)
   end
 
-  def show
-    monastery = Monastery.find_by(id: params[:id])
-    render json: MonasterySerializer.new(monastery)
-  end
-
   def create
     monastery = Monastery.new(monastery_params)
     if monastery.save
