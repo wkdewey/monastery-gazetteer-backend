@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get '/test', to: 'application#test'
   namespace :api do
     namespace :v1 do
-      resources :monasteries, only: [:index, :create]
-      resources :figures, only: [:index, :create]
+      resources :monasteries
+      resources :figures
     end
   end
 end

@@ -6,6 +6,10 @@ class Api::V1::FiguresController < ApplicationController
     render json: FigureSerializer.new(figures)
   end
 
+  def new
+
+  end
+
   def create
     figure = Figure.new(figure_params)
     if figure.save
@@ -13,6 +17,18 @@ class Api::V1::FiguresController < ApplicationController
     else
       render json: { errors: figure.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destory
+    
   end
 
   private
