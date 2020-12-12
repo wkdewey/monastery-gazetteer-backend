@@ -6,9 +6,7 @@ class Api::V1::FiguresController < ApplicationController
     render json: FigureSerializer.new(figures)
   end
 
-  def new
-
-  end
+  def 
 
   def create
     figure = Figure.new(figure_params)
@@ -19,16 +17,22 @@ class Api::V1::FiguresController < ApplicationController
     end
   end
 
-  def edit
-
-  end
 
   def update
-
+    figure = Figure.find_by(id: params[:id])
+    figure.update(project_params)
+    if figure.save
+      render json: FigureSerializer.new(figure), status: :accepted
+    else
+      figure = Figure.find_by(id: params[:id])
+      render json: { errors: figure.errors.full_messages }, status: :unprocessible_entity
+    end
   end
 
-  def destory
-    
+  def destroy
+    figure = Figure.find_by(id: params[:id])
+    figure.destroy
+    render json: FigureSerializer.new(figures)
   end
 
   private

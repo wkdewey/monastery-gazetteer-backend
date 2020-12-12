@@ -6,10 +6,6 @@ class Api::V1::MonasteriesController < ApplicationController
     render json: MonasterySerializer.new(monasteries)
   end
 
-  def show
-    
-  end
-
   def create
     monastery = Monastery.new(monastery_params)
     if monastery.save
@@ -19,16 +15,21 @@ class Api::V1::MonasteriesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
-
+    monastery = Monastery.find_by(id: params[:id])
+    monastery.update(project_params)
+    if monastery.save
+      return json: MonasterySerializer.new(monastery), status: :accepted
+    else
+      monastery = monastery.find_by(id: params[:id])
+      render json: { errors: monastery.errors.full_message }, status: :unprocessible_entity
+    end
   end
 
   def destory
-    
+    monastery = Monastery.find_by(id: params[:id])
+    monastery.destory
+    render json: MonasterySerializer.new(monastery)
   end
 
   private
