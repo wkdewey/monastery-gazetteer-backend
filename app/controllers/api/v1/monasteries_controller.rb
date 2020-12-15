@@ -19,7 +19,7 @@ class Api::V1::MonasteriesController < ApplicationController
     monastery = Monastery.find_by(id: params[:id])
     monastery.update(project_params)
     if monastery.save
-      return json: MonasterySerializer.new(monastery), status: :accepted
+      render json: MonasterySerializer.new(monastery), status: :accepted
     else
       monastery = monastery.find_by(id: params[:id])
       render json: { errors: monastery.errors.full_message }, status: :unprocessible_entity
