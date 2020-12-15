@@ -13,7 +13,6 @@ class Api::V1::FiguresController < ApplicationController
 
   def create
     figure = Figure.new(figure_params)
-    byebug
     if figure.save
       render json: FigureSerializer.new(figure), status: :accepted
     else
