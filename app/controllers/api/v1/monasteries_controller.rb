@@ -29,7 +29,7 @@ class Api::V1::MonasteriesController < ApplicationController
   def destory
     monastery = Monastery.find_by(id: params[:id])
     monastery.destory
-    render json: MonasterySerializer.new(monastery)
+    render json: MonasterySerializer.new(monasteries)
   end
 
   private
