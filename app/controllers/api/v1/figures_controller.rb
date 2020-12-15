@@ -6,7 +6,10 @@ class Api::V1::FiguresController < ApplicationController
     render json: FigureSerializer.new(figures)
   end
 
-  def 
+  def show
+    figure = Figure.find_by(id: params[:id])
+    render json: FigureSerializer.new(figure)
+  end
 
   def create
     figure = Figure.new(figure_params)
