@@ -22,7 +22,7 @@ class Api::V1::MonasteriesController < ApplicationController
 
   def update
     monastery = Monastery.find_by(id: params[:id])
-    monastery.update(project_params)
+    monastery.update(monastery_params)
     if monastery.save
       render json: MonasterySerializer.new(monastery), status: :accepted
     else
