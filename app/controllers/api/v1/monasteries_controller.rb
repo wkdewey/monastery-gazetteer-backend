@@ -40,6 +40,6 @@ class Api::V1::MonasteriesController < ApplicationController
   private
 
   def monastery_params
-    params.require(:monastery).permit(:name, :location, :religious_tradition, figure_ids: [])
+    params.require(:monastery).permit(:name, :location, :religious_tradition, :image, figure_ids: [])
   end
 end

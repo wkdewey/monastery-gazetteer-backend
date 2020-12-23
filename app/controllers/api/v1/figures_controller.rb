@@ -41,6 +41,6 @@ class Api::V1::FiguresController < ApplicationController
   private
 
   def figure_params
-    params.require(:figure).permit(:name, :lifespan, :religious_tradition, monastery_ids: [])
+    params.require(:figure).permit(:name, :lifespan, :religious_tradition, :image, monastery_ids: [])
   end
 end
