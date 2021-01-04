@@ -1,7 +1,7 @@
 class Api::V1::MonasteriesController < ApplicationController
 
   wrap_parameters :monastery, include: [:name, :location, :religious_tradition, :figure_ids]
-  wrap_paramaters format: [:multipart_form], include: [:image]
+  wrap_parameters format: [:multipart_form], include: [:image]
   def index
     monasteries = Monastery.all
     render json: MonasterySerializer.new(monasteries)
