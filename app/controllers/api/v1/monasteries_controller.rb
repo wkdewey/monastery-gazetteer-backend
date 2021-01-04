@@ -1,7 +1,7 @@
 class Api::V1::MonasteriesController < ApplicationController
 
   wrap_parameters :monastery, include: [:name, :location, :religious_tradition, :figure_ids]
-  wrap_parameters format: [:multipart_form], include: [:image]
+  
   def index
     monasteries = Monastery.all
     render json: MonasterySerializer.new(monasteries)
@@ -24,7 +24,11 @@ class Api::V1::MonasteriesController < ApplicationController
   def update
     monastery = Monastery.find_by(id: params[:id])
     byebug
-    monastery.update(monastery_params)
+    if params[:image]
+      monastery.update(image_params)
+    else
+      monastery.update(monastery_params)
+    end
     if monastery.save
       render json: MonasterySerializer.new(monastery), status: :accepted
     else
@@ -43,6 +47,10 @@ class Api::V1::MonasteriesController < ApplicationController
 
   def monastery_params
     params.require(:monastery).permit(:name, :location, :religious_tradition, :image, figure_ids: [])
+  end
+
+  def image_params
+    params.permit(:image)
   end
 
 end
