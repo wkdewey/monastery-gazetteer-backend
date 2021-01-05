@@ -23,7 +23,14 @@ class Api::V1::FiguresController < ApplicationController
 
   def update
     figure = Figure.find_by(id: params[:id])
-    figure.update(figure_params)
+    debugger
+    if params[:image]
+      debugger
+      figure.update(image_params)
+    else
+      debugger
+      figure.update(figure_params)
+    end
     if figure.save
       render json: FigureSerializer.new(figure), status: :accepted
     else
