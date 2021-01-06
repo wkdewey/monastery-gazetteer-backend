@@ -23,14 +23,10 @@ class Api::V1::MonasteriesController < ApplicationController
 
   def update
     monastery = Monastery.find_by(id: params[:id])
-    debugger
     if params[:image]
-      debugger
       monastery.update(image_params)
-    else
-      debugger
-      monastery.update(monastery_params)
     end
+    monastery.update(monastery_params)
     if monastery.save
       render json: MonasterySerializer.new(monastery), status: :accepted
     else
