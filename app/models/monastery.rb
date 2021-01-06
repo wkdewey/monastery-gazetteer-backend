@@ -8,6 +8,8 @@ class Monastery < ApplicationRecord
   accepts_nested_attributes_for :figures
 
   def get_image_url
-    url_for(self.image)
+    if self.image.attached?
+      url_for(self.image)
+    end
   end
 end
