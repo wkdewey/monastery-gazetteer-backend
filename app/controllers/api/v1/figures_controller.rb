@@ -23,14 +23,10 @@ class Api::V1::FiguresController < ApplicationController
 
   def update
     figure = Figure.find_by(id: params[:id])
-    debugger
     if params[:image]
-      debugger
       figure.update(image_params)
-    else
-      debugger
-      figure.update(figure_params)
     end
+    figure.update(figure_params)
     if figure.save
       render json: FigureSerializer.new(figure), status: :accepted
     else
@@ -49,5 +45,9 @@ class Api::V1::FiguresController < ApplicationController
 
   def figure_params
     params.require(:figure).permit(:name, :lifespan, :religious_tradition, :image, monastery_ids: [])
+  end
+
+  def image_params
+    params.permit(:image, :id)
   end
 end
