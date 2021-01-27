@@ -104,5 +104,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   #change the below when I actually deploy the application
-  Rails.application.routes.default_url_options = { host: "http://localhost:3000" }
+  Rails.application.routes.default_url_options = { host: "https://young-forest-03120.herokuapp.com}
 end
