@@ -10,6 +10,7 @@ class Monastery < ApplicationRecord
   def get_image_url
     if self.image.attached?
       url_for(self.image)
+      byebug
     end
   end
 end
