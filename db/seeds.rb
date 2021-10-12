@@ -28,16 +28,16 @@ monasteries = Monastery.create([
   { name: 'Tsel Gungtang', location: 'Lhasa, Tibet', religious_tradition: 'Kagyu' }
 ])
 figures = Figure.create([
-  { name: 'Tsongkhapa Lobzang Drakpa', lifespan: '1357-1419', religious_tradition: 'Geluk' },
-  { name: 'Tenth Karmapa, Choying Dorje', lifespan: '1604-1675', religious_tradition: 'Karma Kagyu'},
-  { name: 'Mipham', lifespan: '1813-1899', religious_tradition: 'Nyingma' },
-  { name: 'Sakya Pandita', lifespan: '1182-1251', religious_tradition: 'Sakya' },
-  { name: 'Khedrupje', lifespan: '1385-1438', religious_tradition: 'Geluk' },
-  { name: 'Jamgön Kongtrul Lodrö Thayé', lifespan: '1813-1899', religious_tradition: 'Karma Kagyu'},
-  { name: 'Jigme Lingpa', lifespan: '1730-1798', religious_tradition: 'Nyingma' },
-  { name: 'Gorampa', lifespan: '1429-1489', religious_tradition: 'Sakya' },
-  { name: 'Ngawang Tsültrim', lifespan: '1721-1791', religious_tradition: 'Geluk' },
-  { name: 'Third Karmapa, Rangjung Dorje', lifespan: '1284-1338', religious_tradition: 'Karma Kagyu'}
+  { name: 'Tsongkhapa Lobzang Drakpa', birth_date: '1357', death_date: '1419', religious_tradition: 'Geluk' },
+  { name: 'Tenth Karmapa, Choying Dorje', birth_date: '1604', death_date: '1675', religious_tradition: 'Karma Kagyu'},
+  { name: 'Mipham', birth_date: '1813', death_date: '1899', religious_tradition: 'Nyingma' },
+  { name: 'Sakya Pandita', birth_date: '1182', death_date: '1251', religious_tradition: 'Sakya' },
+  { name: 'Khedrupje', birth_date: '1385', death_date: '1438', religious_tradition: 'Geluk' },
+  { name: 'Jamgön Kongtrul Lodrö Thayé', birth_date: '1813', death_date: '1899', religious_tradition: 'Karma Kagyu'},
+  { name: 'Jigme Lingpa', birth_date: '1730', death_date: '1798', religious_tradition: 'Nyingma' },
+  { name: 'Gorampa', birth_date: '1429', death_date: '1489', religious_tradition: 'Sakya' },
+  { name: 'Ngawang Tsültrim', birth_date: '1721', death_date: '1791', religious_tradition: 'Geluk' },
+  { name: 'Third Karmapa, Rangjung Dorje', birth_date: '1284', death_date: '1338', religious_tradition: 'Karma Kagyu'}
 ])
 figures[0].monasteries << [monasteries[10], monasteries[0], monasteries[7]]
 figures[1].monasteries << [monasteries[11], monasteries[13]]

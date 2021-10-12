@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_013753) do
+ActiveRecord::Schema.define(version: 2021_10_10_185807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 2020_12_23_013753) do
 
   create_table "figures", force: :cascade do |t|
     t.string "name"
-    t.string "lifespan"
     t.string "religious_tradition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "birth_date"
+    t.datetime "death_date"
+    t.string "description"
   end
 
   create_table "monasteries", force: :cascade do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_013753) do
     t.string "religious_tradition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "founding_date"
   end
 
   create_table "monastery_figures", force: :cascade do |t|
@@ -57,7 +60,12 @@ ActiveRecord::Schema.define(version: 2020_12_23_013753) do
     t.bigint "figure_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "story"
+    t.string "role"
+    t.string "associated_teaching"
+    t.bigint "figures_id"
     t.index ["figure_id"], name: "index_monastery_figures_on_figure_id"
+    t.index ["figures_id"], name: "index_monastery_figures_on_figures_id"
     t.index ["monastery_id"], name: "index_monastery_figures_on_monastery_id"
   end
 
