@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_185431) do
+ActiveRecord::Schema.define(version: 2021_10_22_213644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,10 @@ ActiveRecord::Schema.define(version: 2021_10_15_185431) do
     t.string "religious_tradition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "birth_date"
-    t.datetime "death_date"
+    t.string "birth_date"
+    t.string "death_date"
     t.string "description"
-    t.bigint "monastery_figures_id"
-    t.index ["monastery_figures_id"], name: "index_figures_on_monastery_figures_id"
+    t.bigint "monastery_figure_id"
   end
 
   create_table "monasteries", force: :cascade do |t|
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_185431) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "founding_date"
+    t.string "description"
   end
 
   create_table "monastery_figures", force: :cascade do |t|
