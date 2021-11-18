@@ -1,6 +1,6 @@
 class Api::V1::FiguresController < ApplicationController
 
-  wrap_parameters :figure, include: [:name, :lifespan, :religious_tradition, :monastery_ids]
+  wrap_parameters :figure, include: [:name, :birth_date, :death_date, :biography, :religious_tradition, :monastery_ids]
   def index
     figures = Figure.all
     render json: FigureSerializer.new(figures)
@@ -44,7 +44,7 @@ class Api::V1::FiguresController < ApplicationController
   private
 
   def figure_params
-    params.require(:figure).permit(:name, :lifespan, :religious_tradition, :image, monastery_ids: [])
+    params.require(:figure).permit(:name, :birth_date, :death_date, :biography, :religious_tradition, :image, monastery_ids: [])
   end
 
   def image_params
