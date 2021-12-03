@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :monasteries
       resources :figures
+      resources :monastery_figures
     end
   end
 end
