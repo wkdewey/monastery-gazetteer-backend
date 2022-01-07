@@ -1,6 +1,6 @@
 class Api::V1::MonasteryFiguresController < ApplicationController
 
-  wrap_parameters :MonasteryFigure, include: [:name, :birth_date, :death_date, :biography, :religious_tradition, :monastery_ids]
+  wrap_parameters :monastery_figure, include: [:figure_id, :monastery_id, :story, :role, :associated_teaching]
   def index
     monastery_figures = MonasteryFigure.all
     render json: MonasteryFigureSerializer.new(monastery_figures)
@@ -23,8 +23,8 @@ class Api::V1::MonasteryFiguresController < ApplicationController
 
   def update
     monastery_figure = MonasteryFigure.find_by(id: params[:id])
-    MonasteryFigure.update(monastery_figure_params)
-    if MonasteryFigure.save
+    monastery_figure.update(monastery_figure_params)
+    if monastery_figure.save
       render json: MonasteryFigureSerializer.new(monastery_figure), status: :accepted
     else
       monastery_figure = MonasteryFigure.find_by(id: params[:id])
